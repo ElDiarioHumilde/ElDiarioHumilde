@@ -1,0 +1,257 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #333333; /* Fondo oscuro para la parte de noticias */
+    color: #e5e7eb;
+    font-family: sans-serif;
+}
+
+/* --- ESTILO DE LA PORTADA (HERO) --- */
+.hero {
+    height: 100vh;
+    
+    /* AQUÍ PON TU IMAGEN (Revisa si es .png o .jpg) */
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('fondo.png');
+    
+    background-size: cover;
+    background-position: center;
+    
+    /* EL TRUCO MAGICO: La imagen se queda quieta al bajar */
+    background-attachment: fixed; 
+    
+    /* Para centrar el texto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem; /* Título gigante */
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px rgba(0,0,0,0.8); /* Sombra para leer mejor */
+}
+
+.hero p {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+/* --- ESTILO DE LAS NOTICIAS --- */
+.contenido-diario {
+    background-color: #0D3B30; /* El color de fondo del "papel" */
+    padding: 80px 20px; /* Espacio alrededor del texto */
+    max-width: 800px; /* Que no sea muy ancho para leer cómodo */
+    margin: 0 auto; /* Centrar el bloque de noticias */
+    line-height: 1.6; /* Espacio entre líneas */
+}
+
+.contenido-diario h2 {
+    font-family: 'Oswald', sans-serif;
+    color: #cbd5e1;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #334155; /* Línea debajo del título */
+    padding-bottom: 10px;
+}
+
+/*PANTALLA DE CARGA XD*/
+#loader {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #020617; display: flex; justify-content: center;
+    align-items: center; z-index: 9999; transition: opacity 0.5s ease, visibility 0.5s;
+}
+.spinner {
+    width: 50px; height: 50px; border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffffff; border-radius: 50%; animation: spin 1s linear infinite;
+}
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.hidden { opacity: 0; visibility: hidden; }
+.portada-body {
+    height: 100vh;
+    overflow: hidden; /* Evita que haya scroll en la portada */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Usamos tu fondo aquí también */
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('fondo.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.bienvenida {
+    text-align: center;
+    color: white;
+}
+
+.bienvenida h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 5rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+.subtitulo {
+    font-size: 1.5rem;
+    margin-bottom: 3rem; /* Espacio entre texto y botón */
+    font-weight: 300;
+    opacity: 0.9;
+}
+
+/* --- DISEÑO DEL BOTÓN --- */
+.boton-entrar {
+    display: inline-block;
+    padding: 15px 40px;
+    border: 2px solid #ffffff; /* Borde blanco fino */
+    color: #ffffff;
+    text-decoration: none; /* Quita el subrayado azul feo */
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    transition: all 0.3s ease; /* Suaviza la animación */
+    text-transform: uppercase;
+}
+
+/* Efecto al pasar el mouse por encima */
+.boton-entrar:hover {
+    background-color: #ffffff; /* Se rellena de blanco */
+    color: #000000; /* Letras negras */
+    transform: scale(1.05); /* Crece un poquito */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.4); /* Brillo */
+}
+/* --- ESTRUCTURA DE DOS COLUMNAS --- */
+
+/* 1. El contenedor padre que organiza todo */
+.contenedor-principal {
+    display: flex; /* Esto pone los elementos uno al lado del otro */
+    max-width: 1100px; /* Ancho máximo para que no se estire demasiado */
+    margin: 40px auto; /* Centrado en la pantalla */
+    gap: 40px; /* Espacio entre la columna de texto y la de fotos */
+    padding: 0 20px;
+}
+
+/* 2. La columna de la izquierda (Texto) */
+.columna-articulos {
+    flex: 3; /* Ocupa 3 partes del espacio (75%) */
+}
+
+/* 3. La columna de la derecha (Portadas) */
+.columna-lateral {
+    flex: 1; /* Ocupa 1 parte del espacio (25%) */
+    background-color: #232729; /* Un fondo un poco más claro para resaltar */
+    padding: 20px;
+    border-radius: 8px;
+    height: fit-content; /* Se ajusta al tamaño del contenido */
+    position: sticky; /* Opcional: Para que te siga al bajar (a veces requiere top) */
+    top: 20px;
+}
+
+.columna-lateral h3 {
+    font-family: 'Oswald', sans-serif;
+    color: #8c8c8c;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #8c8c8c;
+    padding-bottom: 10px;
+}
+
+/* --- ESTILO DE LAS FOTOS DE PORTADA --- */
+.portada-item {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.portada-item img {
+    width: 100%; /* Que la foto ocupe todo el ancho de la columnita */
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.portada-item img:hover {
+    transform: scale(1.05); /* Efecto zoom al pasar el mouse */
+}
+
+.portada-item p {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #cbd5e1;
+}
+
+/* --- RESPONSIVE (Para celulares) --- */
+/* Si la pantalla es pequeña (celular), ponemos todo en una sola columna */
+@media (max-width: 768px) {
+    .contenedor-principal {
+        flex-direction: column; /* Uno debajo del otro */
+    }
+}
+/* --- CABECERA ANCHA (TIPO BANNER) --- */
+
+.header-noticias {
+    /* 1. AQUI PONEMOS LA FOTO PARA QUE OCUPE TODO */
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('fondo.png');
+    background-size: cover;      /* Cubre todo el ancho */
+    background-position: center; /* Centra la imagen */
+    
+    /* 2. Tamaño y Bordes */
+    padding: 40px 50px; /* Más alto para que se luzca la foto */
+    border-bottom: 4px solid #ffffff; /* Una línea blanca elegante abajo */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Sombra para que flote */
+
+    /* 3. Acomodar los elementos (Izquierda y Derecha) */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ESTILO DEL TÍTULO */
+.header-noticias h1 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 3rem; /* Letra más grande */
+    color: #ffffff;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    text-shadow: 3px 3px 6px #000000; /* Sombra fuerte para leerse bien */
+}
+
+/* ESTILO DEL BOTÓN (Para que resalte sobre la foto) */
+.btn-volver {
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+    color: #ffffff;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #ffffff;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* MÓVIL: En celulares que se vea bien */
+@media (max-width: 600px) {
+    .header-noticias {
+        flex-direction: column;
+        padding: 20px;
+        text-align: center;
+        gap: 15px;
+    }
+    .header-noticias h1 {
+        font-size: 2rem;
+    }
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido - El Diario Humilde</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=block" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body class="portada-body">
+
+    <div class="bienvenida">
+        <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+        <h1>EL DIARIO HUMILDE</h1>
+        <p class="subtitulo">OMARRRRR</p>
+        
+        <a href="diario.html" class="boton-entrar">ENTRAR</a>
+    </div>
+  <script>
+        window.addEventListener("load", function () {
+            const loader = document.getElementById("loader");
+            if(loader) loader.classList.add("hidden");
+        });
+    </script>
+
+
+</body>
+</html>
